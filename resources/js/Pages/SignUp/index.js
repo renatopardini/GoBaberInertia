@@ -1,6 +1,8 @@
 import React from 'react'
 import Layout from '@/Shared/Layout'
 
+import { useForm } from "react-hook-form"
+
 import { FiArrowLeft, FiMail, FiUser, FiLock } from 'react-icons/fi'
 import logoImg from '../../Assets/logo.svg'
 
@@ -9,30 +11,35 @@ import Button from '../../Components/Button'
 
 import { Container, Content, Background } from './styles'
 
-const SignUp = () => (
-    <Layout>
-        <Container>
-            <Background/>
-            <Content>
-                <img src={logoImg} title="GoBarber" />
+const SignUp = () => {
+    const { register, handleSubmit } = useForm()
+    const onSubmit = data => console.log(data);
 
-                <form>
-                    <h1>Faça seu cadastro</h1>
+    return (
+        <Layout>
+            <Container>
+                <Background/>
+                <Content>
+                    <img src={logoImg} title="GoBarber" />
 
-                    <Input name="name" icon={FiUser} type="text" placeholder="Nome"/>
-                    <Input name="email" icon={FiMail} type="text" placeholder="E-mail"/>
-                    <Input name="password" icon={FiLock} type="password" placeholder="Senha"/>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <h1>Faça seu cadastro</h1>
 
-                    <Button type="submit">Cadastrar</Button>
-                </form>
+                        <Input name="name" icon={FiUser} register={register} type="text" placeholder="Nome"/>
+                        <Input name="email" icon={FiMail} register={register} type="text" placeholder="E-mail"/>
+                        <Input name="password" icon={FiLock} register={register} type="password" placeholder="Senha"/>
 
-                <a href="">
-                    <FiArrowLeft/>
-                    Voltar para logon
-                </a>
-            </Content>
-        </Container>
-    </Layout>
-)
+                        <Button type="submit">Cadastrar</Button>
+                    </form>
+
+                    <a href="">
+                        <FiArrowLeft/>
+                        Voltar para logon
+                    </a>
+                </Content>
+            </Container>
+        </Layout>
+    )
+}
 
 export default SignUp;

@@ -30,6 +30,7 @@
         "@inertiajs/inertia-react": "^0.4.1",
         "@inertiajs/progress": "^0.2.0",
         "polished": "^4.0.3",
+        "react-hook-form": "^6.10.1",
         "react-icons": "^3.11.0",
         "styled-components": "^5.2.0",
         "styled-tools": "^1.7.2"
